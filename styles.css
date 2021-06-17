@@ -1,0 +1,46 @@
+h1{
+	text-align: center;
+}
+
+header{
+	height: 75px;
+}
+main{
+	display: flex;
+	flex-direction: column;
+}
+
+
+.container{
+	height: 750px;
+	width: 450px;
+	border: solid grey 1rem 1rem;
+}
+.stat_ticker{
+	text-align: center;
+	margin:1rem;
+	border: solid 1;
+}
+
+.button_bar_wrapper{
+	display: flex;
+	justify-content: space-evenly;
+	margin:2rem;
+}
+
+.scoreboard {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.team_score{
+	text-align: center;
+	font-size: xx-large;
+}
+.team_score_label{
+	text-align: center;
+	color: black;
+}
+
+
+
