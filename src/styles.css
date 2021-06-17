@@ -1,3 +1,9 @@
+@import "./Games/games.css";
+@import "./Players/players.css";
+@import "./Scores/scores.css";
+@import "./TeamPlayers/teamPlayers.css";
+
+
 h1{
 	text-align: center;
 }
