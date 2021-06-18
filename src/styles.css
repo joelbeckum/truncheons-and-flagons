@@ -2,6 +2,7 @@
 @import "./Players/players.css";
 @import "./Scores/scores.css";
 @import "./TeamPlayers/teamPlayers.css";
+@import "./Players/addNewPlayer.css";
 
 body {
   background-image: url("assets/dragon.jpeg");
