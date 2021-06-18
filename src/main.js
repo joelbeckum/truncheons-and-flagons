@@ -1,6 +1,7 @@
 import { startGamePage } from "./Games/startGame.js";
 import {AddNewPlayer} from './Players/addNewPlayer.js'
 import { AddNewTeam } from "./Teams/addNewTeam.js";
+import { fetchExternalData } from "./dataAccess.js"
 
 console.log("Mother of Dragons is alive!!!");
 
@@ -8,8 +9,11 @@ const mainContainer = document.querySelector(".container")
 
 const render = () => {
  
-mainContainer.innerHTML = startGamePage()
-  
+	fetchExternalData().then(
+		() => {
+			mainContainer.innerHTML = startGamePage()
+		}
+	)
 };
 
 render();
