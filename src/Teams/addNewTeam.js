@@ -1,4 +1,4 @@
-
+import {startGamePage} from "../Games/startGame.js"
 // generate the html for adding a new player that is called from the click event listener of the add player button
 export const AddNewTeam= () => {
 	
@@ -17,6 +17,7 @@ const mainContainer = document.querySelector(".container")
 
 document.addEventListener("click",(event) => {
 	if (event.target.id === "submit_new_team"){
-		console.log("submit new player is connected")
+		mainContainer.innerHTML = startGamePage()
+		console.log("submit new Team is connected")
 	}
 } )
