@@ -20,9 +20,9 @@ export const EnterGameScores = () => {
 const mainContainer = document.querySelector(".container");
 let round = 1;
 
-let totalTeam1Score = 0;
-let totalTeam2Score = 0;
-let totalTeam3Score = 0;
+export let totalTeam1Score = 0;
+export let totalTeam2Score = 0;
+export let totalTeam3Score = 0;
 
 document.addEventListener("click", (event) => {
   if (event.target.id === "submit_round_score") {
@@ -44,6 +44,9 @@ document.addEventListener("click", (event) => {
         totalTeam2Score,
         totalTeam3Score
       );
+      document.getElementById("team_1_scoreboard").innerHTML = totalTeam1Score;
+      document.getElementById("team_2_scoreboard").innerHTML = totalTeam2Score;
+      document.getElementById("team_3_scoreboard").innerHTML = totalTeam3Score;
 
       mainContainer.innerHTML = EnterGameScores();
     } else {
@@ -54,16 +57,24 @@ document.addEventListener("click", (event) => {
       totalTeam2Score += teamScore2;
       totalTeam3Score += teamScore3;
 
-      console.log("the final score is :" ,totalTeam1Score, totalTeam2Score, totalTeam3Score);
+      console.log(
+        "the final score is :",
+        totalTeam1Score,
+        totalTeam2Score,
+        totalTeam3Score
+      );
 
       // need to push scores to the database here before they get reset for them new game
       
-      mainContainer.innerHTML = FinalScoreDisplay();
-
       round = 1;
       totalTeam1Score = 0;
       totalTeam2Score = 0;
       totalTeam3Score = 0;
+      
+      document.getElementById("team_1_scoreboard").innerHTML = totalTeam1Score;
+      document.getElementById("team_2_scoreboard").innerHTML = totalTeam2Score;
+      document.getElementById("team_3_scoreboard").innerHTML = totalTeam3Score;
+      mainContainer.innerHTML = FinalScoreDisplay();
 
     }
   }
