@@ -1,61 +1,50 @@
 <!DOCTYPE html>
 
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title></title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="styles.css">
-	</head>
-	<body>
-		<header><h1>Truncheons and Flagons hey</h1></header>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header><h1>Truncheons and Flagons</h1></header>
 
-		<!-- This is the section to insert the Stat ticker -->
-		<section class="stat_ticker">Stat Ticker</section>
+    <!-- This is the section to insert the Stat ticker -->
+    <div class="ticker_wrapper">
+    <section class="stat_ticker">"Fine," snapped Mrs. Weasley. "Go naked. And, Harry, make sure you get a picture of him. Goodness knows I could do with a laugh."
+</section>
+    </div>
 
-		
-		<main>
+    <main>
+        <section class="button_bar_wrapper">
+          <div><button>Add Player</button></div>
+          <div class="current_game_label">Choose To Play</div>
+          <div><button>Add Team</button></div>
+        </section>
 
-			<section class="button_bar_wrapper"><div><button> Add Player </button></div> <div> Current Game </div><div><button>  Add Team </button></div></section>
-			
-			<article class="container">
+      <article class="container">
+        <!-- This is the main game window. This window transition while the rest of the screen stays static.  -->
+      </article>
+      <!-- This is the bottom score board that will update as the game progresses -->
+      <article class="scoreboard">
+        <div class="team_wrapper">
+          <div class="team_score">12</div>
+          <div class="team_score_label">Team 1</div>
+        </div>
+        <div class="team_wrapper">
+          <div class="team_score">12</div>
+          <div class="team_score_label">Team 2</div>
+        </div>
+        <div class="team_wrapper">
+          <div class="team_score">12</div>
+          <div class="team_score_label">Team 3</div>
+        </div>
+      </article>
+    </main>
 
-				
-				
-				
-				
-				
-							
-				<!-- This is the main game window. This window transition while the rest of the screen stays static.  -->
-			
-			
-			
-			
-			
-			
-			
-			</article>
-			<!-- This is the bottom score board that will update as the game progresses -->
-			<article class="scoreboard">
-				<div class="team_wrapper">
-				<div class="team_score">12</div>
-				<div class="team_score_label">Team 1</div>
-				</div>
-				<div class="team_wrapper">
-				<div class="team_score">12</div>
-				<div class="team_score_label">Team 2</div>
-				</div>
-				<div class="team_wrapper">
-				<div class="team_score">12</div>
-				<div class="team_score_label">Team 3</div>
-				</div>
-			</article>
-
-
-		</main>
-		
-		<script type="module" src="main.js" async defer></script>
-	</body>
+    <script type="module" src="main.js" async defer></script>
+  </body>
 </html>
