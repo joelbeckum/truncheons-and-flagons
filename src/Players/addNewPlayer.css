@@ -2,4 +2,9 @@
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
+	height: 100%;
+}
+
+.submit_new_player{
+	margin: 0rem 5rem 0rem 5rem;
 }
