@@ -5,15 +5,21 @@ export const AddNewPlayer = () => {
 	
 	return `
 	<section class="player_info_input"> 
-		<form >
-			<label for="firstName">First name:</label>
-			<input type="text" id="firstName" name="firstName"><br><br>
-			<label for="lastName">Last name:</label>
-			<input type="text" id="LastName" name="lastName"><br><br>
-			<label for="choose_team">Choose a Team:</label>
-			<select name="player_team_picker" id="player_team_picker">
-			<option value="{teamId}">Map the teams and filter based on who is not full.</option>  
+		<form class="add_new_player_form">
+			<div class="player_option">
+				<label for="firstName">First name:</label>
+				<input type="text" id="firstName" name="firstName"><br><br>
+			</div>
+			<div class="player_option">
+				<label class="player_input" for="lastName">Last name:</label>
+				<input type="text" id="lastName" name="lastName"><br><br>
+			</div>
+			<div class="player_option">
+				<label for="choose_team">Choose a Team:</label>
+				<select name="player_team_picker" id="player_team_picker">
+				<option value="{teamId}">Map the teams and filter based on who is not full.</option>  
 			</select>	
+			</div>
 		</form>
 		<button id="submit_new_player"> Add New Player </button>
 	</section>
