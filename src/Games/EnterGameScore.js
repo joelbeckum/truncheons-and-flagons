@@ -11,7 +11,6 @@ export const EnterGameScores = () => {
 		
 		</form>
 		<button id="submit_round_score"> Submit Score </button>
-		<button id="start_game" class="start_game_button">Start Game</button>
 	 
 	 </section>
 	 `;
