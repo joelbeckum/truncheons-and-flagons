@@ -1,3 +1,5 @@
+import { FinalScoreDisplay } from "./FinalScoreDisplay.js";
+
 export const EnterGameScores = () => {
   return `
 	 <section>
@@ -15,3 +17,12 @@ export const EnterGameScores = () => {
 	 </section>
 	 `;
 };
+
+const mainContainer = document.querySelector(".container")
+
+document.addEventListener("click",(event) => {
+	if (event.target.id === "submit_round_score"){
+		mainContainer.innerHTML = FinalScoreDisplay()
+		console.log("submit new player is connected")
+	}
+} )
