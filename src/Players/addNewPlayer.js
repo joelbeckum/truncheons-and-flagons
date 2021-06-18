@@ -10,7 +10,7 @@ export const AddNewPlayer = () => {
 			<input type="text" id="firstName" name="firstName"><br><br>
 			<label for="lastName">Last name:</label>
 			<input type="text" id="LastName" name="lastName"><br><br>
-			<label for="cars">Choose a Team:</label>
+			<label for="choose_team">Choose a Team:</label>
 			<select name="player_team_picker" id="player_team_picker">
 			<option value="{teamId}">Map the teams and filter based on who is not full.</option>  
 			</select>	
