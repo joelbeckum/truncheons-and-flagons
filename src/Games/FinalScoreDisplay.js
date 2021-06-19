@@ -1,5 +1,5 @@
 import { startGamePage } from "./startGame.js";
-import {setScoreBoard} from "./EnterGameScore.js";
+import { setScoreBoard } from "./EnterGameScore.js";
 
 export const FinalScoreDisplay = (winnerName) => {
   return `
@@ -16,8 +16,10 @@ const mainContainer = document.querySelector(".container");
 
 document.addEventListener("click", (event) => {
   if (event.target.id === "end_game") {
- 
     setScoreBoard();
+    document.getElementById("chosenTeam1").innerHTML = "Team 1";
+    document.getElementById("chosenTeam2").innerHTML = "Team 2";
+    document.getElementById("chosenTeam3").innerHTML = "Team 3";
     mainContainer.innerHTML = startGamePage();
   }
 });
