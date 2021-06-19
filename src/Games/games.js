@@ -30,19 +30,24 @@ const mainContainer = document.querySelector(".container");
 
 document.addEventListener("click", (event) => {
   if (event.target.id === "submit_chosen_teams") {
-	let totalTeam1Score = 0
-	let totalTeam2Score = 0
-	let totalTeam3Score = 0
+	
+	const teams = getTeams()
 
-	const team1 = document.getElementById("player_team_picker_1").value
-	const team2 = document.getElementById("player_team_picker_2").value
-	const team3 = document.getElementById("player_team_picker_3").value
+	const team1Id = parseInt(document.getElementById("player_team_picker_1").value)
+	const team2Id = parseInt(document.getElementById("player_team_picker_2").value)
+	const team3Id = parseInt(document.getElementById("player_team_picker_3").value)
 
-	totalTeam1Score += team1
+	const playingTeam1Obj = teams.find(team => team.id === team1Id)
+	const playingTeam2Obj = teams.find(team => team.id === team2Id)
+	const playingTeam3Obj= teams.find(team => team.id === team3Id)
+	
+	const playingTeam1Name = playingTeam1Obj.teamName
+	const playingTeam2Name = playingTeam2Obj.teamName
+	const playingTeam3Name = playingTeam3Obj.teamName
 
-	console.log(team1, team2, team3, )
+	console.log(team1Id, team2Id, team3Id, playingTeam1Name, playingTeam2Name, playingTeam3Name )
 
-    mainContainer.innerHTML = EnterGameScores();
+    mainContainer.innerHTML = EnterGameScores(playingTeam1Obj, playingTeam2Obj, playingTeam3Obj);
 
     
   }
