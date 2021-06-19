@@ -1,7 +1,10 @@
 import { startGamePage } from "../Games/startGame.js"
+import {getTeams} from "../dataAccess.js"
 
 // generate the html for adding a new player that is called from the click event listener of the add player button
 export const AddNewPlayer = () => {
+
+	const teams = getTeams()
 	
 	return `
 	<section class="player_info_input"> 
@@ -17,8 +20,8 @@ export const AddNewPlayer = () => {
 			<div class="player_option">
 				<label for="choose_team">Choose a Team:</label>
 				<select name="player_team_picker" id="player_team_picker">
-				<option value="{teamId}">Map the teams and filter based on who is not full.</option>  
-			</select>	
+				${teams.map((team) => `<option value="${team.id}">${team.teamName}</option>`).join("") }
+				</select>	
 			</div>
 		</form>
 		<button id="submit_new_player"> Add New Player </button>
@@ -30,7 +33,12 @@ const mainContainer = document.querySelector(".container")
 
 document.addEventListener("click",(event) => {
 	if (event.target.id === "submit_new_player"){
+
+		const firstName = document.getElementById("firstName").value
+		const lastName = document.getElementById("lastName").value
+		const playerTeam = document.getElementById("player_team_picker").value
+		
 		mainContainer.innerHTML = startGamePage()
-		console.log("submit new player is connected")
+		console.log("submit new player is connected", firstName, lastName, playerTeam)
 	}
 } )
