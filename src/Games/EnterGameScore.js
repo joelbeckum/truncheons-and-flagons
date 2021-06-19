@@ -99,12 +99,14 @@ document.addEventListener("click", (event) => {
       }
 
       // need to push scores to the database here before they get reset for them new game
+      
 
       setScoreBoard();
       totalTeam1Score = 0;
       totalTeam2Score = 0;
       totalTeam3Score = 0;
       round = 1;
+
 
       mainContainer.innerHTML = FinalScoreDisplay(winnerName);
       
