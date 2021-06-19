@@ -1,6 +1,7 @@
 import { FinalScoreDisplay } from "./FinalScoreDisplay.js";
 
 export const EnterGameScores = () => {
+	// How do we want to pull values into this function? Pass values or pull from API
   return `
 	 <section>
 	 	<form >
@@ -64,6 +65,20 @@ document.addEventListener("click", (event) => {
         totalTeam3Score
       );
 
+//       find the winning score of the game
+
+      if (totalTeam1Score > (Math.max(totalTeam2Score, totalTeam3Score))) {console.log("Team 1 wins")}
+      if (totalTeam2Score > (Math.max(totalTeam1Score, totalTeam3Score))) {console.log("Team 2 wins")}
+      if (totalTeam3Score > (Math.max(totalTeam2Score, totalTeam1Score))) {console.log("Team 3 wins")}
+
+//       if the game is a tie
+
+      if (totalTeam1Score ===  totalTeam2Score && totalTeam1Score === totalTeam3Score) { 
+	mainContainer.innerHTML = EnterGameScores()
+	console.log("The Game is a tie! You must battle to the death!")
+	return
+}
+     
       // need to push scores to the database here before they get reset for them new game
       
       round = 1;
