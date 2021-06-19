@@ -1,16 +1,20 @@
 import { FinalScoreDisplay } from "./FinalScoreDisplay.js";
 
-export const EnterGameScores = () => {
+export const EnterGameScores = (playingTeam1, playingTeam2, playingTeam3) => {
+
+	chosenTeam1 = playingTeam1
+	chosenTeam2 = playingTeam2
+	chosenTeam3 = playingTeam3
   // How do we want to pull values into this function? Pass values or pull from API
 
   return `
 	 <section>
 	 	<form >
-			<label for="team_1_score">{Team 1 Name Placeholder}</label>
+			<label for="team_1_score">${playingTeam1.teamName}</label>
 			<input  type="number" id="team_1_score" name="team_1_score"><br><br>
-			<label for="team_2_score">{Team 2 Name Placeholder}</label>
+			<label for="team_2_score">${playingTeam2.teamName}</label>
 			<input  type="number" id="team_2_score" name="team_2_score"><br><br>
-			<label for="team_3_score">{Team 3 Name Placeholder}</label>
+			<label for="team_3_score">${playingTeam3.teamName}</label>
 			<input 	 type="number" id="team_3_score" name="team_3_score"><br><br>	
 		</form>
 		<button id="submit_round_score"> Submit Score </button>
@@ -45,13 +49,16 @@ let teamScore1 = 0;
 let teamScore2 = 0;
 let teamScore3 = 0;
 let winnerName = "";
+let chosenTeam1 = {}
+let chosenTeam2 = {}
+let chosenTeam3 = {}
 
 document.addEventListener("click", (event) => {
   if (event.target.id === "submit_round_score") {
     if (round < 3) {
       submitRoundScores();
       setScoreBoard();
-      mainContainer.innerHTML = EnterGameScores();
+      mainContainer.innerHTML = EnterGameScores(chosenTeam1,chosenTeam2,chosenTeam3);
       return;
     } else {
       submitRoundScores();
@@ -59,15 +66,15 @@ document.addEventListener("click", (event) => {
       //       find the winning score of the game
 
       if (totalTeam1Score > Math.max(totalTeam2Score, totalTeam3Score)) {
-        winnerName = "Team1";
+        winnerName = chosenTeam1.teamName;
         console.log("Team 1 wins");
       }
       if (totalTeam2Score > Math.max(totalTeam1Score, totalTeam3Score)) {
-        winnerName = "Team2";
+        winnerName = chosenTeam2.teamName;
         console.log("Team 2 wins");
       }
       if (totalTeam3Score > Math.max(totalTeam2Score, totalTeam1Score)) {
-        winnerName = "Team3";
+        winnerName = chosenTeam3.teamName;
         console.log("Team 3 wins");
       }
 
@@ -82,7 +89,7 @@ document.addEventListener("click", (event) => {
         totalTeam2Score === totalTeam3Score
       ) {
         setScoreBoard();
-        mainContainer.innerHTML = EnterGameScores();
+        mainContainer.innerHTML = EnterGameScores(chosenTeam1,chosenTeam2,chosenTeam3);
         console.log("The Game is a tie! You must battle to the death!");
         return;
       }
@@ -96,6 +103,8 @@ document.addEventListener("click", (event) => {
       round = 1;
 
       mainContainer.innerHTML = FinalScoreDisplay(winnerName);
+      
+//       Push data game data to the database 
     }
   }
 });
