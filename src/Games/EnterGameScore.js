@@ -5,6 +5,7 @@ export const EnterGameScores = (playingTeam1, playingTeam2, playingTeam3) => {
 	chosenTeam1 = playingTeam1
 	chosenTeam2 = playingTeam2
 	chosenTeam3 = playingTeam3
+	setScoreBoard()
   // How do we want to pull values into this function? Pass values or pull from API
 
   return `
@@ -37,6 +38,9 @@ export const setScoreBoard = () => {
   document.getElementById("team_1_scoreboard").innerHTML = totalTeam1Score;
   document.getElementById("team_2_scoreboard").innerHTML = totalTeam2Score;
   document.getElementById("team_3_scoreboard").innerHTML = totalTeam3Score;
+  document.getElementById("chosenTeam1").innerHTML = chosenTeam1.teamName;
+  document.getElementById("chosenTeam2").innerHTML = chosenTeam2.teamName;
+  document.getElementById("chosenTeam3").innerHTML = chosenTeam3.teamName;
 };
 
 const mainContainer = document.querySelector(".container");
