@@ -1,28 +1,33 @@
 .player_info_input{
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	height: 100%;
+	width: 328px;
+	border: #f45c5c solid 0.15rem;
+	border-radius: 2rem;
+	margin: 2rem;
+	background-color: rgba(43, 42, 42, 0.808);
+	color: whitesmoke;
+	font-size: 20px;
+	text-align: center;
 }
 
 .submit_new_player{
 	margin: 0rem 5rem 0rem 5rem;
 }
 
-.add_new_player_form{
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
+.add_new_player_form label {
+	display: block;
 }
 
-.player_option{
-	display: flex;
-	justify-content: center;
-	
+.player_option {
+	margin: 1rem 0;
 }
 
-#player_team_picker,
-#firstName,
-#lastName {
-flex-basis: 55%;
+.player_option select, .player_option input {
+	width: 80%;
 }
+
+.player_info_input button {
+	width: 80%;
+	padding: 11px 0;
+	margin: 1rem 0 2rem;
+}
+
