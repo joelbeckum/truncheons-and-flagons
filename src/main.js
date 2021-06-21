@@ -29,3 +29,7 @@ document.addEventListener("click", (event) => {
     mainContainer.innerHTML = AddNewPlayer();
   }
 });
+
+document.addEventListener("stateChanged", customEvent => {
+	render()
+})
