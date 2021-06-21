@@ -1,10 +1,42 @@
 import { startGamePage } from "../Games/startGame.js"
-import {getTeams} from "../dataAccess.js"
+import {getTeamPlayerList, getTeams} from "../dataAccess.js"
 
 // generate the html for adding a new player that is called from the click event listener of the add player button
 export const AddNewPlayer = () => {
 
-	const teams = getTeams()
+
+	
+	
+	
+	// loop the list of teams and filter out the teams with 3 players or more
+	// push the teams with 3 players or less into new array
+	// map the new array to display html of the teams that can be chosen
+
+	const filteredTeams = []
+	const getAvailableTeams = () => {
+		const teams = getTeams()
+		const teamPlayerList = getTeamPlayerList()
+		for (const team of teams) {
+			const filteredPlayers = teamPlayerList.filter(listItem => listItem.teamId === team.id)
+			if (filteredPlayers.length < 3) {
+				filteredTeams.push(team)
+			}
+		}
+	}
+	getAvailableTeams()
+
+	// const getAvailableTeams = () => {
+
+	// 	for (const team of teams){
+	// 		const teamPlayerList = teamList.map(teamPlayers => { team.id === teamPlayers.teamId})
+	// 		if (teamPlayerList.length < 3){
+	// 			filteredTeamList.push(team)
+	// 		}
+	// 	}
+
+	// }
+
+
 	
 	return `
 	<section class="player_info_input"> 
@@ -20,7 +52,8 @@ export const AddNewPlayer = () => {
 			<div class="player_option">
 				<label for="choose_team">Choose a Team</label>
 				<select name="player_team_picker" id="player_team_picker">
-				${teams.map((team) => `<option value="${team.id}">${team.teamName}</option>`).join("") }
+				${filteredTeams.map((team) => {
+					return `<option value="${team.id}">${team.teamName}</option>`}).join("") }
 				</select>	
 			</div>
 		</form>

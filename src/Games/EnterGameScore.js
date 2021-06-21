@@ -68,7 +68,7 @@ let winnerName = "";
 let chosenTeam1 = {};
 let chosenTeam2 = {};
 let chosenTeam3 = {};
-const scoresArray = [totalTeam1Score,totalTeam2Score,totalTeam3Score]
+
 
 document.addEventListener("click", (event) => {
   if (event.target.id === "submit_round_score") {
@@ -87,34 +87,21 @@ document.addEventListener("click", (event) => {
       submitRoundScores();
 
       //find the winning score of the game
-      //This logic needs to be worked on. Maybe a switch statement
 
       if (totalTeam1Score > Math.max(totalTeam2Score, totalTeam3Score)) {
         winnerName = chosenTeam1.teamName;
         console.log("Team 1 wins");
       }
-      if (totalTeam2Score > Math.max(totalTeam1Score, totalTeam3Score)) {
+      else if (totalTeam2Score > Math.max(totalTeam1Score, totalTeam3Score)) {
         winnerName = chosenTeam2.teamName;
         console.log("Team 2 wins");
       }
-      if (totalTeam3Score > Math.max(totalTeam2Score, totalTeam1Score)) {
+      else if (totalTeam3Score > Math.max(totalTeam2Score, totalTeam1Score)) {
         winnerName = chosenTeam3.teamName;
         console.log("Team 3 wins");
       }
-
-      // !!!This has a bug that if the 2 lower scores are tied it still doesn't throw a winner`   if the game is a tie
-
-      if (
-	      
-	// sortedWinner[0] === sortedWinner[1]
-	 
-
-        (totalTeam1Score === totalTeam2Score && totalTeam1Score === totalTeam3Score) ||
-        totalTeam1Score === totalTeam2Score ||
-        totalTeam1Score === totalTeam3Score ||
-        totalTeam1Score === totalTeam3Score ||
-        totalTeam2Score === totalTeam3Score
-      ) {
+	else 
+	{
         setScoreBoard();
         mainContainer.innerHTML = EnterGameScores(
           chosenTeam1,
