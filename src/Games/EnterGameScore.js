@@ -1,11 +1,10 @@
 import { FinalScoreDisplay } from "./FinalScoreDisplay.js";
 
 export const EnterGameScores = (playingTeam1, playingTeam2, playingTeam3) => {
-
-	chosenTeam1 = playingTeam1
-	chosenTeam2 = playingTeam2
-	chosenTeam3 = playingTeam3
-	setScoreBoard()
+  chosenTeam1 = playingTeam1;
+  chosenTeam2 = playingTeam2;
+  chosenTeam3 = playingTeam3;
+  setScoreBoard();
   // How do we want to pull values into this function? Pass values or pull from API
 
   return `
@@ -28,10 +27,23 @@ const submitRoundScores = () => {
   teamScore1 = parseInt(document.getElementById("team_1_score").value);
   teamScore2 = parseInt(document.getElementById("team_2_score").value);
   teamScore3 = parseInt(document.getElementById("team_3_score").value);
-  totalTeam1Score += teamScore1;
-  totalTeam2Score += teamScore2;
-  totalTeam3Score += teamScore3;
-  round++;
+
+  if (
+    Number.isNaN(teamScore1) ||
+    Number.isNaN(teamScore2) ||
+    Number.isNaN(teamScore3) ||
+    teamScore1 < 0 ||
+    teamScore2 < 0 ||
+    teamScore3 < 0
+  ) {
+    // CHANGE THIS TO A CLEANER INTERFACE POSSIBLY MODAL	  
+    window.alert("These scores are not valid. Please Log a valid score.");
+  } else {
+    totalTeam1Score += teamScore1;
+    totalTeam2Score += teamScore2;
+    totalTeam3Score += teamScore3;
+    round++;
+  }
 };
 
 export const setScoreBoard = () => {
@@ -53,21 +65,29 @@ let teamScore1 = 0;
 let teamScore2 = 0;
 let teamScore3 = 0;
 let winnerName = "";
-let chosenTeam1 = {}
-let chosenTeam2 = {}
-let chosenTeam3 = {}
+let chosenTeam1 = {};
+let chosenTeam2 = {};
+let chosenTeam3 = {};
+const scoresArray = [totalTeam1Score,totalTeam2Score,totalTeam3Score]
 
 document.addEventListener("click", (event) => {
   if (event.target.id === "submit_round_score") {
-    if (round < 3) {
-      submitRoundScores();
-      setScoreBoard();
-      mainContainer.innerHTML = EnterGameScores(chosenTeam1,chosenTeam2,chosenTeam3);
+
+	  
+	if (round < 3) {
+	submitRoundScores();
+	setScoreBoard();
+	mainContainer.innerHTML = EnterGameScores(
+        chosenTeam1,
+        chosenTeam2,
+        chosenTeam3
+      );
       return;
     } else {
       submitRoundScores();
 
-      //       find the winning score of the game
+      //find the winning score of the game
+      //This logic needs to be worked on. Maybe a switch statement
 
       if (totalTeam1Score > Math.max(totalTeam2Score, totalTeam3Score)) {
         winnerName = chosenTeam1.teamName;
@@ -82,35 +102,42 @@ document.addEventListener("click", (event) => {
         console.log("Team 3 wins");
       }
 
-      //    !!!This has a bug that if the 2 lower scores are tied it still doesnt throw a winner`   if the game is a tie
+      // !!!This has a bug that if the 2 lower scores are tied it still doesn't throw a winner`   if the game is a tie
 
       if (
-        (totalTeam1Score === totalTeam2Score &&
-          totalTeam1Score === totalTeam3Score) ||
+	      
+	// sortedWinner[0] === sortedWinner[1]
+	 
+
+        (totalTeam1Score === totalTeam2Score && totalTeam1Score === totalTeam3Score) ||
         totalTeam1Score === totalTeam2Score ||
         totalTeam1Score === totalTeam3Score ||
         totalTeam1Score === totalTeam3Score ||
         totalTeam2Score === totalTeam3Score
       ) {
         setScoreBoard();
-        mainContainer.innerHTML = EnterGameScores(chosenTeam1,chosenTeam2,chosenTeam3);
+        mainContainer.innerHTML = EnterGameScores(
+          chosenTeam1,
+          chosenTeam2,
+          chosenTeam3
+        );
         console.log("The Game is a tie! You must battle to the death!");
         return;
       }
 
       // need to push scores to the database here before they get reset for them new game
-      
 
       setScoreBoard();
+
+      // Reset the total team score counter back to 0
       totalTeam1Score = 0;
       totalTeam2Score = 0;
       totalTeam3Score = 0;
       round = 1;
 
-
       mainContainer.innerHTML = FinalScoreDisplay(winnerName);
-      
-//       Push data game data to the database 
+
+      // Push data game data to the database
     }
   }
 });
