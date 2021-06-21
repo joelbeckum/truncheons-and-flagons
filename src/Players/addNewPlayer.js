@@ -10,15 +10,15 @@ export const AddNewPlayer = () => {
 	<section class="player_info_input"> 
 		<form class="add_new_player_form">
 			<div class="player_option">
-				<label for="firstName">First name:</label>
+				<label for="firstName">First Name</label>
 				<input type="text" id="firstName" name="firstName"><br><br>
 			</div>
 			<div class="player_option">
-				<label class="player_input" for="lastName">Last name:</label>
+				<label class="player_input" for="lastName">Last Name</label>
 				<input type="text" id="lastName" name="lastName"><br><br>
 			</div>
 			<div class="player_option">
-				<label for="choose_team">Choose a Team:</label>
+				<label for="choose_team">Choose a Team</label>
 				<select name="player_team_picker" id="player_team_picker">
 				${teams.map((team) => `<option value="${team.id}">${team.teamName}</option>`).join("") }
 				</select>	

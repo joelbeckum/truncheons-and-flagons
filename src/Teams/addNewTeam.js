@@ -4,7 +4,7 @@ export const AddNewTeam= () => {
 	
 	return `
 	<section class="new_team_input"> 
-		<form >
+		<form class="add_new_team_form">
 			<label for="teamName">New Team Name</label>
 			<input type="text" id="teamName" name="teamName">	
 		</form>
