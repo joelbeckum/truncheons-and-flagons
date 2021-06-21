@@ -1,19 +1,20 @@
 import { startGamePage } from "./Games/startGame.js";
 import { AddNewPlayer } from "./Players/addNewPlayer.js";
 import { AddNewTeam } from "./Teams/addNewTeam.js";
-import { fetchExternalData } from "./dataAccess.js"
+import { fetchExternalData } from "./dataAccess.js";
+import { StatTicker } from "./StatTicker/statTicker.js";
 
 console.log("Mother of Dragons is alive!!!");
 
 const mainContainer = document.querySelector(".container");
 
-const render = () => {
+const statTicker = document.querySelector(".stat_ticker");
 
-	fetchExternalData().then(
-		() => {
-			mainContainer.innerHTML = startGamePage()
-		}
-	)
+const render = () => {
+  fetchExternalData().then(() => {
+    mainContainer.innerHTML = startGamePage();
+    statTicker.innerHTML = StatTicker();
+  });
 };
 
 render();
@@ -30,6 +31,6 @@ document.addEventListener("click", (event) => {
   }
 });
 
-document.addEventListener("stateChanged", customEvent => {
-	render()
-})
+document.addEventListener("stateChanged", (customEvent) => {
+  render();
+});
