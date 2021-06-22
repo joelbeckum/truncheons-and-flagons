@@ -1,4 +1,4 @@
-import { getTeams } from "../dataAccess.js"
+import { getTeams, sendTeam } from "../dataAccess.js"
 import {startGamePage} from "../Games/startGame.js"
 // generate the html for adding a new player that is called from the click event listener of the add player button
 export const AddNewTeam= () => {
@@ -21,14 +21,20 @@ document.addEventListener("click",(event) => {
 		const teams = getTeams()
 		const newlyCreatedTeam = document.getElementById("teamName").value 
 		const duplicateTeamNameCheck = teams.find(team => team.teamName === newlyCreatedTeam)
-		if (duplicateTeamNameCheck !== "undefined"){ 
+		if (duplicateTeamNameCheck !== undefined){ 
 			window.alert("This name has already been chosen.Please pick a new team name.")
 		 	return
 		
 		}
 		else {
-			
-			mainContainer.innerHTML = startGamePage()
+			const pendingTeam = {
+				teamName: newlyCreatedTeam
+			}
+
+			sendTeam(pendingTeam)
+			.then( () => {
+				mainContainer.innerHTML = startGamePage()
+			})
 			
 		}
 	}
