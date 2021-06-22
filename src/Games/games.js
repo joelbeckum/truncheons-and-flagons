@@ -1,5 +1,5 @@
 import { EnterGameScores } from "./EnterGameScore.js";
-import { getTeams } from "../dataAccess.js";
+import { getTeams, sendGame } from "../dataAccess.js";
 
 // generate the html for adding choose_teams dropdown that is called from the click event listener of the start game button
 export const ChooseTeams = () => {
@@ -65,18 +65,17 @@ document.addEventListener("click", (event) => {
       const playingTeam2Obj = teams.find((team) => team.id === team2Id);
       const playingTeam3Obj = teams.find((team) => team.id === team3Id);
 
-      const playingTeam1Name = playingTeam1Obj.teamName;
-      const playingTeam2Name = playingTeam2Obj.teamName;
-      const playingTeam3Name = playingTeam3Obj.teamName;
+      //send teams chosen to the games array in json database
+      // use sendGame() need to update send game with the proper URL/games
 
-      console.log(
-        team1Id,
-        team2Id,
-        team3Id,
-        playingTeam1Name,
-        playingTeam2Name,
-        playingTeam3Name
-      );
+
+      const sendToAPI = {
+        teamOneId: team1Id,
+        teamTwoId: team2Id,
+        teamThreeId: team3Id,
+      };
+
+      sendGame(sendToAPI);
 
       mainContainer.innerHTML = EnterGameScores(
         playingTeam1Obj,
