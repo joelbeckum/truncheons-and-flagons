@@ -25,17 +25,6 @@ export const AddNewPlayer = () => {
 	}
 	getAvailableTeams()
 
-	// const getAvailableTeams = () => {
-
-	// 	for (const team of teams){
-	// 		const teamPlayerList = teamList.map(teamPlayers => { team.id === teamPlayers.teamId})
-	// 		if (teamPlayerList.length < 3){
-	// 			filteredTeamList.push(team)
-	// 		}
-	// 	}
-
-	// }
-
 
 	
 	return `

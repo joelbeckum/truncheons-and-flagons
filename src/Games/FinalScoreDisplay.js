@@ -2,13 +2,15 @@ import { startGamePage } from "./startGame.js";
 import { setScoreBoard } from "./EnterGameScore.js";
 
 export const FinalScoreDisplay = (winnerName) => {
-  return `
-		<section> 
-			<div> The ${winnerName} is the last dragon standing! Roar! </div>
+  return `	
+  	<div class="final_score_display_wrapper">
+		<section class="final_score_display"> 
+			<div class="winner_announcement"> The ${winnerName} are the last dragons standing!</div><div> Roar! </div>
 			<div class="end_game_button_wrapper">
-			<button id="end_game" class="end_game">Start Game</button>
+			<button id="end_game" class="end_game">Start New Game</button>
 			</div>
 		</section>
+	</div>
 	`;
 };
 

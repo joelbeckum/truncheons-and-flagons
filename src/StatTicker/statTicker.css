@@ -1,0 +1,11 @@
+
+.ticker_wrapper{
+	display: flex;
+	justify-content: center;
+}
+
+.team_stat{
+	display: flex;
+	margin: .5rem;
+	justify-content: center;
+}

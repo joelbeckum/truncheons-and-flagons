@@ -8,18 +8,25 @@ export const EnterGameScores = (playingTeam1, playingTeam2, playingTeam3) => {
   // How do we want to pull values into this function? Pass values or pull from API
 
   return `
-	 <section>
-	 	<form >
-			<label for="team_1_score">${playingTeam1.teamName}</label>
-			<input  type="number" id="team_1_score" name="team_1_score"><br><br>
-			<label for="team_2_score">${playingTeam2.teamName}</label>
-			<input  type="number" id="team_2_score" name="team_2_score"><br><br>
-			<label for="team_3_score">${playingTeam3.teamName}</label>
-			<input 	 type="number" id="team_3_score" name="team_3_score"><br><br>	
+	
+	 <section class="enter_scores_wrapper">
+	 	<form class="enter_scores>
+		 	<div>
+			<label for="team_1_score">${playingTeam1.teamName}</label><div></div>
+			<input  class="input_score" type="number" id="team_1_score" name="team_1_score"></div>
+			<div>
+			<label for="team_2_score">${playingTeam2.teamName}</label><div></div>
+			<input  class="input_score"type="number" id="team_2_score" name="team_2_score">
+			</div>
+			<div>
+			<label for="team_3_score">${playingTeam3.teamName}</label><div></div>
+			<input 	 class="input_score" type="number" id="team_3_score" name="team_3_score">
+			</div>	
 		</form>
 		<button id="submit_round_score"> Submit Score </button>
 	 
 	 </section>
+	
 	 `;
 };
 
