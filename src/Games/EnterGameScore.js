@@ -77,26 +77,9 @@ let chosenTeam1 = {};
 let chosenTeam2 = {};
 let chosenTeam3 = {};
 
-let team1FinalScoreObj = {
-	gameId: 0,
-	teamId: chosenTeam1.id,
-	score:0,
-	didWin: false
-};
-let team2FinalScoreObj = {
-	gameId: 0,
-	teamId: chosenTeam2.id,
-	score:0,
-	didWin: false
-};
-let team3FinalScoreObj = {
-	gameId: 0,
-	teamId: chosenTeam3.id,
-	score:0,
-	didWin: false
-};
-
-
+let team1FinalScoreObj = {};
+let team2FinalScoreObj = {};
+let team3FinalScoreObj = {};
 
 
 document.addEventListener("click", (event) => {
@@ -107,6 +90,10 @@ document.addEventListener("click", (event) => {
 	team1FinalScoreObj.gameId = currentGameId
 	team2FinalScoreObj.gameId = currentGameId
 	team3FinalScoreObj.gameId = currentGameId
+
+	team1FinalScoreObj.teamId = chosenTeam1.id
+	team2FinalScoreObj.teamId = chosenTeam2.id
+	team3FinalScoreObj.teamId = chosenTeam3.id
 	
 	  
 	if (round < 3) {
@@ -177,9 +164,15 @@ document.addEventListener("click", (event) => {
       totalTeam2Score = 0;
       totalTeam3Score = 0;
       round = 1;
-      team1FinalScoreObj = {}
-      team2FinalScoreObj = {}
-      team3FinalScoreObj = {}
+      team1FinalScoreObj = {
+	      didWin: false
+      }
+      team2FinalScoreObj = {
+	      didWin: false
+      }
+      team3FinalScoreObj = {
+	      didWin:false
+      }
 
       mainContainer.innerHTML = FinalScoreDisplay(winnerName);
 
