@@ -175,6 +175,8 @@ document.addEventListener("click", (event) => {
       }
 
       mainContainer.innerHTML = FinalScoreDisplay(winnerName);
+      
+      document.dispatchEvent(new CustomEvent("stateChanged"))
 
       // Push data game data to the database
     }
