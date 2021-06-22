@@ -34,6 +34,7 @@ document.addEventListener("click",(event) => {
 			sendTeam(pendingTeam)
 			.then( () => {
 				mainContainer.innerHTML = startGamePage()
+				mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
 			})
 			
 		}
