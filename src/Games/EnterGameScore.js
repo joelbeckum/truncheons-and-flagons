@@ -1,3 +1,4 @@
+import { getGames, sendScore } from "../dataAccess.js";
 import { FinalScoreDisplay } from "./FinalScoreDisplay.js";
 
 export const EnterGameScores = (playingTeam1, playingTeam2, playingTeam3) => {
@@ -76,10 +77,24 @@ let chosenTeam1 = {};
 let chosenTeam2 = {};
 let chosenTeam3 = {};
 
+let team1FinalScoreObj = {};
+let team2FinalScoreObj = {};
+let team3FinalScoreObj = {};
+
 
 document.addEventListener("click", (event) => {
   if (event.target.id === "submit_round_score") {
+	const currentGameList = getGames()
+	const currentGameId = currentGameList.length + 1
 
+	team1FinalScoreObj.gameId = currentGameId
+	team2FinalScoreObj.gameId = currentGameId
+	team3FinalScoreObj.gameId = currentGameId
+
+	team1FinalScoreObj.teamId = chosenTeam1.id
+	team2FinalScoreObj.teamId = chosenTeam2.id
+	team3FinalScoreObj.teamId = chosenTeam3.id
+	
 	  
 	if (round < 3) {
 	submitRoundScores();
@@ -93,18 +108,29 @@ document.addEventListener("click", (event) => {
     } else {
       submitRoundScores();
 
+	// set final score in the final score obj for each team
+
+	team1FinalScoreObj.score = totalTeam1Score
+	team2FinalScoreObj.score = totalTeam2Score
+	team3FinalScoreObj.score = totalTeam3Score
+	
       //find the winning score of the game
+      // set a boolean of didWin on the score for that team
+
 
       if (totalTeam1Score > Math.max(totalTeam2Score, totalTeam3Score)) {
         winnerName = chosenTeam1.teamName;
+	team1FinalScoreObj.didWin = true
         console.log("Team 1 wins");
       }
       else if (totalTeam2Score > Math.max(totalTeam1Score, totalTeam3Score)) {
         winnerName = chosenTeam2.teamName;
+	team2FinalScoreObj.didWin = true
         console.log("Team 2 wins");
       }
       else if (totalTeam3Score > Math.max(totalTeam2Score, totalTeam1Score)) {
         winnerName = chosenTeam3.teamName;
+	team3FinalScoreObj.didWin = true
         console.log("Team 3 wins");
       }
 	else 
@@ -121,6 +147,16 @@ document.addEventListener("click", (event) => {
 
       // need to push scores to the database here before they get reset for them new game
 
+  
+ 
+
+      // send all three team scores to the the scores array
+      // use sendScores() to and update send scores with URL/scores
+     
+     sendScore(team1FinalScoreObj).then(
+     sendScore(team2FinalScoreObj)).then(
+     sendScore(team3FinalScoreObj))
+
       setScoreBoard();
 
       // Reset the total team score counter back to 0
@@ -128,6 +164,15 @@ document.addEventListener("click", (event) => {
       totalTeam2Score = 0;
       totalTeam3Score = 0;
       round = 1;
+      team1FinalScoreObj = {
+	      didWin: false
+      }
+      team2FinalScoreObj = {
+	      didWin: false
+      }
+      team3FinalScoreObj = {
+	      didWin:false
+      }
 
       mainContainer.innerHTML = FinalScoreDisplay(winnerName);
 

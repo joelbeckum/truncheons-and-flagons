@@ -7,6 +7,8 @@ let applicationState = {
 }
 
 const API = "http://localhost:8088"
+const mainContainer = document.querySelector(".container");
+
 
 export const fetchExternalData = () => {
     return Promise.all([
