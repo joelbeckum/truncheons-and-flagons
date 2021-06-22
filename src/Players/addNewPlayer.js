@@ -1,5 +1,5 @@
 import { startGamePage } from "../Games/startGame.js"
-import {getTeamPlayerList, getTeams} from "../dataAccess.js"
+import { getTeamPlayerList, getTeams } from "../dataAccess.js"
 
 // generate the html for adding a new player that is called from the click event listener of the add player button
 export const AddNewPlayer = () => {
@@ -67,11 +67,20 @@ const mainContainer = document.querySelector(".container")
 document.addEventListener("click",(event) => {
 	if (event.target.id === "submit_new_player"){
 
-		const firstName = document.getElementById("firstName").value
-		const lastName = document.getElementById("lastName").value
-		const playerTeam = document.getElementById("player_team_picker").value
+		// const firstName = document.getElementById("firstName").value
+		// const lastName = document.getElementById("lastName").value
+		// const playerTeam = document.getElementById("player_team_picker").value
 		
+		// mainContainer.innerHTML = startGamePage()
+		// console.log("submit new player is connected", firstName, lastName, playerTeam)
+
+		const pendingPlayer = {
+			firstName: document.getElementById("firstName").value,
+			lastName: document.getElementById("lastName").value,
+			teamId: parseInt(document.getElementById("player_team_picker").value)
+		}
+
 		mainContainer.innerHTML = startGamePage()
-		console.log("submit new player is connected", firstName, lastName, playerTeam)
+		console.log("Pending player: ", pendingPlayer )
 	}
 } )

@@ -57,7 +57,6 @@ export const sendTeam = teamData => {
         body: JSON.stringify(teamData)
     }
 
-
     return fetch(`${API}/teams`, fetchOptions)
         .then(response => response.json())
         .then(() => {
@@ -73,7 +72,6 @@ export const sendPlayer = playerData => {
         },
         body: JSON.stringify(playerData)
     }
-
 
     return fetch(`${API}/players`, fetchOptions)
         .then(response => response.json())
@@ -91,7 +89,6 @@ export const sendTeamPlayerList = teamPlayerListData => {
         body: JSON.stringify(teamPlayerListData)
     }
 
-
     return fetch(`${API}/teamPlayerList`, fetchOptions)
         .then(response => response.json())
         .then(() => {
@@ -108,7 +105,6 @@ export const sendScore = scoreData => {
         body: JSON.stringify(scoreData)
     }
 
-
     return fetch(`${API}/scores`, fetchOptions)
         .then(response => response.json())
         .then(() => {
@@ -124,7 +120,6 @@ export const sendGame = gameData => {
         },
         body: JSON.stringify(gameData)
     }
-
 
     return fetch(`${API}/games`, fetchOptions)
         .then(response => response.json())
