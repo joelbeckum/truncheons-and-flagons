@@ -6,8 +6,6 @@ let applicationState = {
     games: []
 }
 
-const mainContainer = document.querySelector(".container");
-
 const API = "http://localhost:8088"
 const mainContainer = document.querySelector(".container");
 
