@@ -5,29 +5,37 @@ import { getTeams } from "../dataAccess.js";
 export const ChooseTeams = () => {
   const teams = getTeams();
   return `
+	<div class="choose_teams_wrapper">
 	<section class="choose_teams"> 
 		<form >
-			<label>Choose Team 1:</label>
-			<select name="player_team_picker" id="player_team_picker_1">
+			<div>
+			<label class="player_team_picker_label">Choose Team 1:</label>
+			<select class="team_player_picker" name="player_team_picker" id="player_team_picker_1">
 			${teams
         .map((team) => `<option value="${team.id}">${team.teamName}</option>`)
         .join("")}
-			</select><br><br>	
-			<label>Choose Team 2:</label>
-			<select name="player_team_picker" id="player_team_picker_2">
+			</select><br><br>
+			</div>
+			<div>	
+			<label class="player_team_picker_label">Choose Team 2:</label>
+			<select class="team_player_picker" name="player_team_picker" id="player_team_picker_2">
 			${teams
         .map((team) => `<option value="${team.id}">${team.teamName}</option>`)
         .join("")}  
-			</select><br><br>	
-			<label>Choose Team 3:</label>
-			<select name="player_team_picker" id="player_team_picker_3">
+			</select><br><br>
+			</div>
+			<div>	
+			<label class="player_team_picker_label">Choose Team 3:</label>
+			<select class="team_player_picker" name="player_team_picker" id="player_team_picker_3">
 			${teams
         .map((team) => `<option value="${team.id}">${team.teamName}</option>`)
         .join("")} 
-			</select><br><br>	
+			</select><br><br>
+			</div>	
 		</form>
 		<button id="submit_chosen_teams"> Choose Teams </button>
 	</section>
+	</div>
 	`;
 };
 
