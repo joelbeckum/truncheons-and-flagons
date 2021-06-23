@@ -9,6 +9,7 @@ export let applicationState = {
     }
 }
 
+applicationState.isPlaying.isPlaying = false
 const API = "http://localhost:8088"
 const appContainer = document.querySelector("#appContainer");
 
