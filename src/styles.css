@@ -1,17 +1,16 @@
 @import "./Games/games.css";
-@import "./Players/players.css";
-@import "./Scores/scores.css";
-@import "./TeamPlayers/teamPlayers.css";
 @import "./Players/addNewPlayer.css";
 @import "./Teams/addNewTeam.css";
 @import "./StatTicker/statTicker.css";
-/* @import "./Games/EnterGameScore.css"; */
 
 body {
   background-image: url("assets/dragon.jpeg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+  min-width: 940px;
+  width: auto !important;
+  width: 940px;
 }
 
 h1 {
