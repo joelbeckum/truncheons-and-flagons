@@ -24,7 +24,3 @@ export const StatTicker = () => {
   }
   return html;
 };
-
-const statTicker = document.querySelector(".stat_ticker");
-
-statTicker.innerHTML = StatTicker();
