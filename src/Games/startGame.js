@@ -11,10 +11,7 @@ document.addEventListener("click", (event) => {
     const mainContainer = document.querySelector(".container");
     console.log("The start game button is connected");
     applicationState.isPlaying.isPlaying = true;
-
-    mainContainer.innerHTML = `<div class="dragon_fire"><iframe src="https://giphy.com/embed/TfAHHhLYRTlScWkhdJ" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/larianstudios-dragon-baldurs-gate-3-bg3-TfAHHhLYRTlScWkhdJ"></a></p>`;
-    setTimeout(() => {
-      mainContainer.innerHTML = ChooseTeams();
-    }, 3250);
+    mainContainer.innerHTML = ChooseTeams();
+    
   }
 });
