@@ -1,7 +1,6 @@
 import { StatTicker } from "./StatTicker/statTicker.js"
 import { startGamePage } from "./Games/startGame.js"
-import { AddNewPlayer } from "./Players/addNewPlayer.js"
-import { AddNewTeam } from "./Teams/addNewTeam.js"
+
 
 // const mainContainer = document.querySelector(".container")
 
@@ -43,15 +42,3 @@ export const Truncheons = () => {
     `
 }
 
-document.addEventListener("click", (event) => {
-    if (event.target.id === "add_team") {
-      const mainContainer = document.querySelector(".container")  
-      mainContainer.innerHTML = AddNewTeam();
-    }
-  });
-  document.addEventListener("click", (event) => {
-    if (event.target.id === "add_player") {
-      const mainContainer = document.querySelector(".container")
-      mainContainer.innerHTML = AddNewPlayer();
-    }
-  });

@@ -1,12 +1,12 @@
-import { getGames, sendScore } from "../dataAccess.js";
+import { applicationState, getGames, sendScore } from "../dataAccess.js";
 import { FinalScoreDisplay } from "./FinalScoreDisplay.js";
+
 
 export const EnterGameScores = (playingTeam1, playingTeam2, playingTeam3) => {
   chosenTeam1 = playingTeam1;
   chosenTeam2 = playingTeam2;
   chosenTeam3 = playingTeam3;
   setScoreBoard();
-  // How do we want to pull values into this function? Pass values or pull from API
 
   return `
 	
@@ -81,6 +81,8 @@ let team2FinalScoreObj = {};
 let team3FinalScoreObj = {};
 
 
+
+
 document.addEventListener("click", (event) => {
   if (event.target.id === "submit_round_score") {
   const mainContainer = document.querySelector(".container");
@@ -153,8 +155,8 @@ document.addEventListener("click", (event) => {
       // send all three team scores to the the scores array
       // use sendScores() to and update send scores with URL/scores
      
-     sendScore(team1FinalScoreObj).then(
-     sendScore(team2FinalScoreObj)).then(
+     sendScore(team1FinalScoreObj).then( ()=>
+     sendScore(team2FinalScoreObj)).then(()=>
      sendScore(team3FinalScoreObj))
 
       setScoreBoard();
@@ -173,10 +175,11 @@ document.addEventListener("click", (event) => {
       team3FinalScoreObj = {
 	      didWin:false
       }
-
+//       document.dispatchEvent(new CustomEvent("stateChanged"))
+      
+applicationState.isPlaying.isPlaying = false
       mainContainer.innerHTML = FinalScoreDisplay(winnerName);
       
-      document.dispatchEvent(new CustomEvent("stateChanged"))
 
       // Push data game data to the database
     }
