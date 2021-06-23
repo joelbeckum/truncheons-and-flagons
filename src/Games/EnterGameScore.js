@@ -1,6 +1,8 @@
 import { applicationState, getGames, sendScore } from "../dataAccess.js";
 import { FinalScoreDisplay } from "./FinalScoreDisplay.js";
 
+
+
 export const EnterGameScores = (playingTeam1, playingTeam2, playingTeam3) => {
   chosenTeam1 = playingTeam1;
   chosenTeam2 = playingTeam2;
@@ -75,9 +77,15 @@ let chosenTeam1 = {};
 let chosenTeam2 = {};
 let chosenTeam3 = {};
 
-let team1FinalScoreObj = {};
-let team2FinalScoreObj = {};
-let team3FinalScoreObj = {};
+let team1FinalScoreObj = {
+	didWin:false
+};
+let team2FinalScoreObj = {
+	didWin:false
+};
+let team3FinalScoreObj = {
+	didWin:false
+};
 
 document.addEventListener("click", (event) => {
   if (event.target.id === "submit_round_score") {
@@ -85,9 +93,14 @@ document.addEventListener("click", (event) => {
 	const currentGameList = getGames()
 	const currentGameId = currentGameList.length + 1
 
+
     team1FinalScoreObj.teamId = chosenTeam1.id;
     team2FinalScoreObj.teamId = chosenTeam2.id;
     team3FinalScoreObj.teamId = chosenTeam3.id;
+
+    team1FinalScoreObj.gameId = currentGameId
+    team2FinalScoreObj.gameId = currentGameId
+    team3FinalScoreObj.gameId = currentGameId
 
     if (round < 3) {
       submitRoundScores();
@@ -136,8 +149,8 @@ document.addEventListener("click", (event) => {
       // use sendScores() to and update send scores with URL/scores
 
       sendScore(team1FinalScoreObj)
-        .then(() => sendScore(team2FinalScoreObj))
-        .then(() => sendScore(team3FinalScoreObj));
+        .then(sendScore(team2FinalScoreObj))
+        .then(sendScore(team3FinalScoreObj));
 
       setScoreBoard();
 
