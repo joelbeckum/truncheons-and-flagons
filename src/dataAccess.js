@@ -1,9 +1,12 @@
-let applicationState = {
+export let applicationState = {
     teams: [],
     players: [],
     teamPlayerList: [],
     scores: [],
-    games: []
+    games: [],
+    isPlaying :{
+        isPlaying: false
+    }
 }
 
 const API = "http://localhost:8088"
@@ -49,6 +52,7 @@ export const getScores = () => {
 export const getGames = () => {
     return applicationState.games.map(game => ({...game}))
 }
+
 
 export const sendTeam = teamData => {
     const fetchOptions = {

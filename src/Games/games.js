@@ -1,7 +1,9 @@
 import { EnterGameScores } from "./EnterGameScore.js";
-import { getTeams, sendGame } from "../dataAccess.js";
+import { applicationState, getTeams, sendGame } from "../dataAccess.js";
 
 // generate the html for adding choose_teams dropdown that is called from the click event listener of the start game button
+
+
 export const ChooseTeams = () => {
   const teams = getTeams();
   return `
@@ -75,7 +77,11 @@ document.addEventListener("click", (event) => {
         teamThreeId: team3Id,
       };
 
+      applicationState.isPlaying.isPlaying = true
+
       sendGame(sendToAPI);
+
+      
 
       mainContainer.innerHTML = EnterGameScores(
         playingTeam1Obj,
