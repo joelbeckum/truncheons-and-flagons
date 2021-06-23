@@ -1,11 +1,9 @@
 import { startGamePage } from "../Games/startGame.js"
-import { getTeamPlayerList, getTeams, getPlayers, sendPlayer, sendTeamPlayerList } from "../dataAccess.js"
+import { getTeamPlayerList, getTeams, getPlayers, sendPlayer, sendTeamPlayerList, applicationState } from "../dataAccess.js"
+
 
 // generate the html for adding a new player that is called from the click event listener of the add player button
 export const AddNewPlayer = () => {
-
-
-	
 	
 	
 	// loop the list of teams and filter out the teams with 3 players or more
@@ -55,6 +53,8 @@ const mainContainer = document.querySelector(".container")
 
 document.addEventListener("click",(event) => {
 	if (event.target.id === "submit_new_player"){
+
+	
 		const players = getPlayers()
 
 		const firstName = document.getElementById("firstName").value
