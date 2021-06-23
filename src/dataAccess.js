@@ -10,7 +10,7 @@ export let applicationState = {
 }
 
 const API = "http://localhost:8088"
-const mainContainer = document.querySelector(".container");
+const appContainer = document.querySelector("#appContainer");
 
 
 export const fetchExternalData = () => {
@@ -66,7 +66,7 @@ export const sendTeam = teamData => {
     return fetch(`${API}/teams`, fetchOptions)
         .then(response => response.json())
         .then(() => {
-            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+            appContainer.dispatchEvent(new CustomEvent("stateChanged"))
         })
 }
 
@@ -82,7 +82,7 @@ export const sendPlayer = playerData => {
     return fetch(`${API}/players`, fetchOptions)
         .then(response => response.json())
         .then(() => {
-            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+            appContainer.dispatchEvent(new CustomEvent("stateChanged"))
         })
 }
 
@@ -98,7 +98,7 @@ export const sendTeamPlayerList = teamPlayerListData => {
     return fetch(`${API}/teamPlayerList`, fetchOptions)
         .then(response => response.json())
         .then(() => {
-            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+            appContainer.dispatchEvent(new CustomEvent("stateChanged"))
         })
 }
 
@@ -114,7 +114,7 @@ export const sendScore = scoreData => {
     return fetch(`${API}/scores`, fetchOptions)
         .then(response => response.json())
         .then(() => {
-            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+            appContainer.dispatchEvent(new CustomEvent("stateChanged"))
         })
 }
 
@@ -130,7 +130,7 @@ export const sendGame = gameData => {
     return fetch(`${API}/games`, fetchOptions)
         .then(response => response.json())
         .then(() => {
-            mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+            appContainer.dispatchEvent(new CustomEvent("stateChanged"))
         })
 }
 

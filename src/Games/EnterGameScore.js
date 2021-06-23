@@ -63,7 +63,6 @@ export const setScoreBoard = () => {
   document.getElementById("chosenTeam3").innerHTML = chosenTeam3.teamName;
 };
 
-const mainContainer = document.querySelector(".container");
 let round = 1;
 
 export let totalTeam1Score = 0;
@@ -86,8 +85,7 @@ let team3FinalScoreObj = {};
 
 document.addEventListener("click", (event) => {
   if (event.target.id === "submit_round_score") {
-
-	
+  const mainContainer = document.querySelector(".container");
 	const currentGameList = getGames()
 	const currentGameId = currentGameList.length + 1
 

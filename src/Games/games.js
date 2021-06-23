@@ -41,10 +41,10 @@ export const ChooseTeams = () => {
 	`;
 };
 
-const mainContainer = document.querySelector(".container");
 
 document.addEventListener("click", (event) => {
   if (event.target.id === "submit_chosen_teams") {
+    const mainContainer = document.querySelector(".container");
     const teams = getTeams();
 
     const team1Id = parseInt(

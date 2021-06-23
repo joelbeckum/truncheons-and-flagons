@@ -49,9 +49,9 @@ export const AddNewPlayer = () => {
 	`
 }
 
-const mainContainer = document.querySelector(".container")
 
 document.addEventListener("click",(event) => {
+	const mainContainer = document.querySelector(".container")
 	if (event.target.id === "submit_new_player"){
 
 	
