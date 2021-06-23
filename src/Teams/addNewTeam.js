@@ -1,7 +1,7 @@
 import { getTeams, sendTeam } from "../dataAccess.js"
-import {startGamePage} from "../Games/startGame.js"
+import { startGamePage } from "../Games/startGame.js"
 // generate the html for adding a new player that is called from the click event listener of the add player button
-export const AddNewTeam= () => {
+export const AddNewTeam = () => {
 	
 	return `
 	<section class="new_team_input"> 
@@ -14,9 +14,9 @@ export const AddNewTeam= () => {
 	`
 }
 
-const mainContainer = document.querySelector(".container")
 
 document.addEventListener("click",(event) => {
+	const mainContainer = document.querySelector(".container")
 	if (event.target.id === "submit_new_team"){
 		const teams = getTeams()
 		const newlyCreatedTeam = document.getElementById("teamName").value 

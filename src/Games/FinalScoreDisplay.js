@@ -14,10 +14,10 @@ export const FinalScoreDisplay = (winnerName) => {
 	`;
 };
 
-const mainContainer = document.querySelector(".container");
 
 document.addEventListener("click", (event) => {
-  if (event.target.id === "end_game") {
+	if (event.target.id === "end_game") {
+	const mainContainer = document.querySelector(".container");
     setScoreBoard();
     document.getElementById("chosenTeam1").innerHTML = "Team 1";
     document.getElementById("chosenTeam2").innerHTML = "Team 2";
